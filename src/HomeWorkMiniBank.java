@@ -2,7 +2,6 @@ import java.util.*;
 
 public class HomeWorkMiniBank {
     static class Client {
-        //int age; - возраст клиента, есть в условие задания, не используется
         String name;
 
         public Client(String name) {
@@ -12,21 +11,20 @@ public class HomeWorkMiniBank {
 
     static class Account {
         private final Client client;
-        //        private int amount; накопления золотых монет, не используется
-        private int id; //номер счета
+        private int numberAccount;
 
-        public Account(Client client, int id) {
+        public Account(Client client, int numberAccount) {
             this.client = client;
-            this.id = id;
+            this.numberAccount = numberAccount;
         }
 
         public Client getClient() {
             return client;
         }
 
-        @Override //переопределенеие метода toString
+        @Override
         public String toString() {
-            return client.name + " " + id;
+            return client.name + " " + numberAccount;
         }
     }
 
@@ -48,21 +46,20 @@ public class HomeWorkMiniBank {
                 existingAccounts.add(account);
             }
         }
-
-        Client findClient(Account account) {
-            return account.getClient();
-        }
     }
 
     public static void main(String[] args) {
         Client clientA = new Client("Ivan");
         Client clientB = new Client("Stepan");
+        Client clientC = new Client("Maria");
+
 
         Account account1 = new Account(clientA, 12);
         Account account2 = new Account(clientA, 111);
         Account account3 = new Account(clientA, 31);
         Account account4 = new Account(clientB, 44);
         Account account5 = new Account(clientB, 65);
+        Account account6 = new Account(clientC, 7);
 
         Bank newBank = new Bank();
         newBank.addAccount(account1);
@@ -70,13 +67,14 @@ public class HomeWorkMiniBank {
         newBank.addAccount(account3);
         newBank.addAccount(account4);
         newBank.addAccount(account5);
+        newBank.addAccount(account6);
 
         List<Account> accountsClientA = newBank.getAccounts(clientA);
         for (Account account : accountsClientA) {
             System.out.println(account);
         }
 
-        Client clientAccount = newBank.findClient(account4);
+        Client clientAccount = account6.getClient();
         System.out.println(clientAccount.name);
     }
 }
