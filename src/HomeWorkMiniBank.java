@@ -1,58 +1,11 @@
 import java.util.*;
 
 public class HomeWorkMiniBank {
-    static class Client {
-        String name;
-
-        public Client(String name) {
-            this.name = name;
-        }
-    }
-
-    static class Account {
-        private final Client client;
-        private int numberAccount;
-
-        public Account(Client client, int numberAccount) {
-            this.client = client;
-            this.numberAccount = numberAccount;
-        }
-
-        public Client getClient() {
-            return client;
-        }
-
-        @Override
-        public String toString() {
-            return client.name + " " + numberAccount;
-        }
-    }
-
-    static class Bank {
-        private final Map<Client, List<Account>> clientToAccounts = new HashMap<>();
-
-        List<Account> getAccounts(Client client) {
-            List<Account> accounts = clientToAccounts.get(client);
-            return accounts;
-        }
-
-        void addAccount(Account account) {
-            List<Account> existingAccounts = clientToAccounts.get(account.client);
-            if (existingAccounts == null) {
-                existingAccounts = new ArrayList<>();
-                clientToAccounts.put(account.client, existingAccounts);
-            }
-            if (!existingAccounts.contains(account)) {
-                existingAccounts.add(account);
-            }
-        }
-    }
 
     public static void main(String[] args) {
-        Client clientA = new Client("Ivan");
-        Client clientB = new Client("Stepan");
-        Client clientC = new Client("Maria");
-
+        Client clientA = new Client("Ivan", 1992, 11, 21);
+        Client clientB = new Client("Stepan", 2005, 7, 12);
+        Client clientC = new Client("Maria", 1967, 5, 1);
 
         Account account1 = new Account(clientA, 12);
         Account account2 = new Account(clientA, 111);
@@ -69,12 +22,32 @@ public class HomeWorkMiniBank {
         newBank.addAccount(account5);
         newBank.addAccount(account6);
 
+        //Выводим информацию по счетам клиента A.
+        System.out.println("Выводим информацию по счетам клиента A.");
         List<Account> accountsClientA = newBank.getAccounts(clientA);
-        for (Account account : accountsClientA) {
-            System.out.println(account);
+        try {
+            for (Account account : accountsClientA) {
+                System.out.println(account);
+            }
+        } catch (Exception e) {
+            System.out.println("The client has no accounts because he is a teenager");
         }
 
+        //Выводим имя клиента счета 6.
+        System.out.println("\nВыводим имя клиента счета 6.");
         Client clientAccount = account6.getClient();
         System.out.println(clientAccount.name);
+
+        //Выводим информацию по счетам клиента B.
+        System.out.println("\nВыводим информацию по счетам клиента B.");
+        List<Account> accountsClientB = newBank.getAccounts(clientB);
+        try {
+            for (Account account : accountsClientB) {
+                System.out.println(account);
+            }
+        } catch (Exception e) {
+            System.out.println("The client has no accounts because he is a teenager");
+        }
+
     }
 }
