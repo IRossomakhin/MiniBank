@@ -1,11 +1,12 @@
+import java.time.LocalDate;
 import java.util.*;
 
 public class HomeWorkMiniBank {
 
     public static void main(String[] args) {
-        Client clientA = new Client("Ivan", 1992, 11, 21);
-        Client clientB = new Client("Stepan", 2005, 7, 12);
-        Client clientC = new Client("Maria", 1967, 5, 1);
+        Client clientA = new Client("Ivan", LocalDate.of(1996, 1, 15));
+        Client clientB = new Client("Stepan", LocalDate.of(2005, 7, 12));
+        Client clientC = new Client("Maria", LocalDate.of(1967, 5, 1));
 
         Account account1 = new Account(clientA, 12);
         Account account2 = new Account(clientA, 111);
@@ -36,7 +37,7 @@ public class HomeWorkMiniBank {
         //Выводим имя клиента счета 6.
         System.out.println("\nВыводим имя клиента счета 6.");
         Client clientAccount = account6.getClient();
-        System.out.println(clientAccount.name);
+        System.out.println(clientAccount.getName());
 
         //Выводим информацию по счетам клиента B.
         System.out.println("\nВыводим информацию по счетам клиента B.");

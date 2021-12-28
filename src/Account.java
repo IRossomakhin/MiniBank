@@ -1,12 +1,14 @@
 public class Account {
-    public final Client client;
-    public final int numberAccount;
-    public final long ageClient;
+    private final Client client;
+    private final int numberAccount;
 
     public Account(Client client, int numberAccount) {
         this.client = client;
         this.numberAccount = numberAccount;
-        this.ageClient = client.ageCalculation(client.year, client.month, client.deyOfMonth);
+    }
+
+    public int getNumberAccount() {
+        return numberAccount;
     }
 
     public Client getClient() {
@@ -15,6 +17,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Client: " + client.name + ", age: " + ageClient + ", numberAccount: " + numberAccount;
+        return "Client: " + client.getName() + ", numberAccount: " + getNumberAccount();
     }
 }

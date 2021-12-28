@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,13 +13,13 @@ public class Bank {
     }
 
     void addAccount(Account account) {
-        long age = account.ageClient;
+        long age = ChronoUnit.YEARS.between(account.getClient().getBirthDay(), LocalDate.now());
         if (age >= 18) {
 
-            List<Account> existingAccounts = clientToAccounts.get(account.client);
+            List<Account> existingAccounts = clientToAccounts.get(account.getClient());
             if (existingAccounts == null) {
                 existingAccounts = new ArrayList<>();
-                clientToAccounts.put(account.client, existingAccounts);
+                clientToAccounts.put(account.getClient(), existingAccounts);
             }
             if (!existingAccounts.contains(account)) {
                 existingAccounts.add(account);

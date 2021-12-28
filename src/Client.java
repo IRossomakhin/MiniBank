@@ -1,23 +1,20 @@
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 public class Client {
-    String name;
-    int year;
-    int month;
-    int deyOfMonth;
+    private String name;
+    private LocalDate birthDay;
 
-    public Client(String name, int year, int month, int deyOfMonth) {
+    public Client(String name, LocalDate birthDay) {
         this.name = name;
-        this.year = year;
-        this.month = month;
-        this.deyOfMonth = deyOfMonth;
+        this.birthDay = birthDay;
     }
 
-    public long ageCalculation(int year, int month, int deyOfMonth) {
-        LocalDate birthDay = LocalDate.of(year, month, deyOfMonth);
-        LocalDate currentDate = LocalDate.now();
-        return ChronoUnit.YEARS.between(birthDay, currentDate);
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getBirthDay() {
+        return birthDay;
     }
 }
 
