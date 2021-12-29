@@ -2,7 +2,7 @@ public class Account {
     private final Client client;
     private final int numberAccount;
 
-    public Account(Client client, int numberAccount) {
+    Account(Client client, int numberAccount) {
         this.client = client;
         this.numberAccount = numberAccount;
     }
